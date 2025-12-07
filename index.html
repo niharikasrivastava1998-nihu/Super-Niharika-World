@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Super Niharika World | Autopilot</title>
+    <title>Super Niharika World | Final</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -40,7 +40,7 @@
             background: #000;
         }
 
-        /* --- CONTROLS --- */
+        /* --- HUD --- */
         .hud {
             position: fixed; top: 20px; right: 20px; z-index: 2000; display: flex; gap: 10px;
         }
@@ -57,7 +57,7 @@
             width: 100%; height: 100%;
             overflow-x: scroll; overflow-y: hidden;
             white-space: nowrap; position: relative;
-            scroll-behavior: auto; /* Changed to auto for JS control */
+            scroll-behavior: auto;
         }
         #game-container::-webkit-scrollbar { display: none; }
 
@@ -201,7 +201,7 @@
 
     <audio id="sfx-coin" src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA=="></audio>
     <audio id="bgm" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/951/951.wav" type="audio/wav"> 
+        <source src="https://assets.mixkit.co/active_storage/sfx/123/123.wav" type="audio/wav"> 
     </audio>
 
     <div class="player-wrapper">
@@ -209,19 +209,18 @@
         <span class="player-name">Niharika</span>
     </div>
 
-    <div class="ground"></div>
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-    <div class="cloud c4"></div>
-
     <div id="game-container">
+        <div class="ground"></div>
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+
         <div class="level">
             
             <div class="scene">
                 <div class="title-block">
                     <h1 class="main-title">SUPER NIHARIKA<br>WORLD</h1>
-                    <div class="sub-title">LEVEL 1: THE JOURNEY</div>
+                    <div class="sub-title">PRESS START (SCROLL RIGHT)</div>
                     <p class="controls-hint">AUTO-SCROLLING ENABLED...</p>
                 </div>
             </div>
@@ -264,10 +263,7 @@
 
             <div class="scene">
                 <div class="flag-zone" onclick="openModal('modal-awards')">
-                    <div class="flag-pole">
-                        <div class="pole"></div>
-                        <div class="flag"></div>
-                    </div>
+                    <div class="flag-pole"><div class="pole"></div><div class="flag"></div></div>
                     <div class="flag-base"></div>
                     <p style="margin-top:10px; font-size:12px; background:black; color:white; padding:5px; text-align:center;">AWARDS</p>
                 </div>
@@ -306,11 +302,11 @@
     <div id="modal-bajaj" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">Level 3: Bajaj Finserv</h2>
+            <h2 class="modal-header">World 3: Bajaj Finserv</h2>
             <div class="job-card">
                 <div class="job-role">Social Media Manager</div>
                 <span class="job-company">Aug 2023 - Present</span>
-                <p class="job-desc">Leading successful campaigns to increase brand awareness. Leveraged advanced AI tools to manage social media for <strong>1M+ LinkedIn</strong> and <strong>10K+ Instagram</strong> followers. [cite_start]Drove Instagram growth from 2K to 12K in six months [cite: 130-133].</p>
+                <p class="job-desc">Leading successful campaigns to increase brand awareness. Leveraged advanced AI tools to manage social media for <strong>1M+ LinkedIn</strong> and <strong>10K+ Instagram</strong> followers. Drove Instagram growth from 2K to 12K in six months.</p>
             </div>
         </div>
     </div>
@@ -318,11 +314,11 @@
     <div id="modal-e2e" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">Level 2: E2E Networks</h2>
+            <h2 class="modal-header">World 2: E2E Networks</h2>
             <div class="job-card">
                 <div class="job-role">Technical Content Manager</div>
                 <span class="job-company">Apr 2022 - July 2023</span>
-                <p class="job-desc">Managed technical content and SEO. Scaled LinkedIn community to 1M+ members. [cite_start]Achieved <strong>500% follower growth</strong> in 6 months [cite: 145-148].</p>
+                <p class="job-desc">Managed technical content and SEO. Scaled LinkedIn community to 1M+ members. Achieved <strong>500% follower growth</strong> in 6 months.</p>
             </div>
         </div>
     </div>
@@ -330,16 +326,16 @@
     <div id="modal-early" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">Level 1: Origins</h2>
+            <h2 class="modal-header">World 1: Origins</h2>
             <div class="job-card">
                 <div class="job-role">Marketing Specialist</div>
                 <span class="job-company">Scaler Academy | Dec 2021 - Mar 2022</span>
-                <p class="job-desc">Counseled 500+ IT professionals. [cite_start]Exceeded revenue targets through optimized lead generation [cite: 150-152].</p>
+                <p class="job-desc">Counseled 500+ IT professionals. Exceeded revenue targets through optimized lead generation.</p>
             </div>
             <div class="job-card">
                 <div class="job-role">Marketing Specialist</div>
                 <span class="job-company">PlanetSpark | Feb 2021 - Sep 2021</span>
-                [cite_start]<p class="job-desc">Crafted K-12 curriculums, driving over <strong>1,000 admissions</strong> and exceeding monthly revenue targets by <strong>200-300%</strong> [cite: 162-164].</p>
+                <p class="job-desc">Crafted K-12 curriculums, driving over <strong>1,000 admissions</strong> and exceeding monthly revenue targets by <strong>200-300%</strong>.</p>
             </div>
         </div>
     </div>
@@ -350,9 +346,9 @@
             <h2 class="modal-header">Code Castle</h2>
             <p style="margin-bottom:20px;">Open Source Projects live on GitHub.</p>
             
-            <a href="https://niharikasrivastava1998-nihu.github.io/Total-Impact-Calculator/" target="_blank" class="btn-retro">Total Impact Calculator</a>
-            <a href="https://niharikasrivastava1998-nihu.github.io/Day.OS/" target="_blank" class="btn-retro">Day.OS (AI Life Planner)</a>
-            <a href="https://niharikasrivastava1998-nihu.github.io/VeggieSmart/" target="_blank" class="btn-retro">VeggieSmart (Meal Planner)</a>
+            <a href="#" id="link-1" target="_blank" class="btn-retro">Total Impact Calculator</a>
+            <a href="#" id="link-2" target="_blank" class="btn-retro">Day.OS (AI Life Planner)</a>
+            <a href="#" id="link-3" target="_blank" class="btn-retro">VeggieSmart (Meal Planner)</a>
         </div>
     </div>
 
@@ -360,14 +356,13 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
             <h2 class="modal-header">Hall of Fame</h2>
-            <p style="font-size:0.8rem; color:#666; margin-bottom:15px;">Upload images award1.jpg - award6.jpg</p>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="award1.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">Teach India</span></div>
-                <div class="gallery-item"><img src="award2.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">Inspiring Author</span></div>
-                <div class="gallery-item"><img src="award3.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">Wingword Prize</span></div>
-                <div class="gallery-item"><img src="award4.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">StoryMirror</span></div>
-                <div class="gallery-item"><img src="award5.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">World Book Day</span></div>
-                <div class="gallery-item"><img src="award6.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">SheForeword</span></div>
+                <div class="gallery-item"><img src="award1.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Teach India</span></div>
+                <div class="gallery-item"><img src="award2.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Author</span></div>
+                <div class="gallery-item"><img src="award3.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Wingword</span></div>
+                <div class="gallery-item"><img src="award4.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">StoryMirror</span></div>
+                <div class="gallery-item"><img src="award5.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Book Day</span></div>
+                <div class="gallery-item"><img src="award6.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">SheForeword</span></div>
             </div>
         </div>
     </div>
@@ -382,60 +377,55 @@
     </div>
 
     <script>
-        // --- AUDIO ENGINE ---
+        // --- CONFIG LINKS ---
+        const links = {
+            p1: "https://niharikasrivastava1998-nihu.github.io/Total-Impact-Calculator/",
+            p2: "https://niharikasrivastava1998-nihu.github.io/Day.OS/",
+            p3: "https://niharikasrivastava1998-nihu.github.io/VeggieSmart/"
+        };
+        document.getElementById('link-1').href = links.p1;
+        document.getElementById('link-2').href = links.p2;
+        document.getElementById('link-3').href = links.p3;
+
+        // --- AUDIO ---
         const coinSound = new Audio("data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA==");
         const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/951/951.wav"); 
         bgm.loop = true;
         bgm.volume = 0.4;
-
         let isMuted = false;
+
+        // --- AUTOPILOT ---
         let autoScroll;
         let isPaused = false;
-        const speed = 2; // Pixels per interval
+        const speed = 2; 
 
         function startGame() {
             document.getElementById('start-overlay').style.display = 'none';
             document.querySelector('.hud-btn').style.display = 'flex';
             document.getElementById('mute-ctrl').style.display = 'flex';
-            
-            // Try audio
             bgm.play().catch(e => console.log("Audio needs user intent"));
-            
-            // Start Autopilot
             startAutoScroll();
         }
 
-        // --- AUTOPILOT LOGIC ---
         function startAutoScroll() {
             if(autoScroll) clearInterval(autoScroll);
             autoScroll = setInterval(() => {
                 if(!isPaused) {
-                    const container = document.getElementById('game-container');
-                    container.scrollLeft += speed;
-                    
-                    // Simple flip logic
-                    const player = document.querySelector('.player-wrapper');
-                    player.style.transform = "scaleX(1)";
+                    document.getElementById('game-container').scrollLeft += speed;
+                    document.querySelector('.player-wrapper').style.transform = "scaleX(1)";
                 }
-            }, 30); // ~30fps
+            }, 20);
         }
 
         function togglePause() {
             isPaused = !isPaused;
-            const btn = document.getElementById('pause-btn');
-            btn.innerHTML = isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+            document.getElementById('pause-btn').innerHTML = isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
         }
 
-        // --- AUDIO CONTROLS ---
         function toggleMute() {
             isMuted = !isMuted;
-            if(isMuted) {
-                bgm.pause();
-                document.getElementById('mute-icon').className = "fas fa-volume-mute";
-            } else {
-                bgm.play();
-                document.getElementById('mute-icon').className = "fas fa-volume-up";
-            }
+            if(isMuted) { bgm.pause(); document.getElementById('mute-icon').className = "fas fa-volume-mute"; }
+            else { bgm.play(); document.getElementById('mute-icon').className = "fas fa-volume-up"; }
         }
 
         function playCoin() {
@@ -445,32 +435,28 @@
             }
         }
 
-        // --- INTERACTION ---
-        const container = document.getElementById('game-container');
-        
-        // Pause on hover over interactive elements
+        // Hover pause
         document.querySelectorAll('.pipe, .q-block, .castle-zone, .flag-zone').forEach(el => {
             el.addEventListener('mouseenter', () => isPaused = true);
             el.addEventListener('mouseleave', () => {
-                // Only unpause if main pause button isn't active
                 if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
             });
         });
 
         // Key controls
         document.addEventListener('keydown', (e) => {
+            const container = document.getElementById('game-container');
             if(e.key === "ArrowRight") container.scrollLeft += 20;
             if(e.key === "ArrowLeft") container.scrollLeft -= 20;
         });
 
         function openModal(id) {
             playCoin();
-            isPaused = true; // Pause scrolling when modal opens
+            isPaused = true;
             document.getElementById(id).style.display = 'flex';
         }
         function closeModal() {
             document.querySelectorAll('.modal-overlay').forEach(el => el.style.display = 'none');
-            // Resume if not manually paused
             if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
         }
     </script>
