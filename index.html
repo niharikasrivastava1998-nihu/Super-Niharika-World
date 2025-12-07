@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Super Niharika World</title>
+    <title>Super Niharika World | Autopilot</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -28,7 +28,7 @@
             color: #333;
         }
 
-        /* --- START OVERLAY (FIXED) --- */
+        /* --- START OVERLAY --- */
         #start-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); z-index: 5000;
@@ -36,24 +36,28 @@
             color: white; cursor: pointer; text-align: center;
         }
         .start-msg {
-            border: 4px solid white; padding: 20px; animation: pulse 1.5s infinite;
+            border: 4px solid white; padding: 30px; animation: pulse 1.5s infinite;
             background: #000;
         }
 
-        /* --- MUTE BUTTON --- */
-        .mute-btn {
-            position: fixed; top: 20px; right: 20px; z-index: 2000;
-            background: rgba(0,0,0,0.5); color: white; padding: 10px;
-            border: 2px solid white; cursor: pointer; border-radius: 50%;
-            width: 40px; height: 40px; display: none; align-items: center; justify-content: center;
+        /* --- CONTROLS --- */
+        .hud {
+            position: fixed; top: 20px; right: 20px; z-index: 2000; display: flex; gap: 10px;
         }
+        .hud-btn {
+            background: rgba(0,0,0,0.6); color: white; padding: 10px;
+            border: 2px solid white; cursor: pointer; border-radius: 50%;
+            width: 45px; height: 45px; display: none; align-items: center; justify-content: center;
+            font-size: 18px; transition: 0.2s;
+        }
+        .hud-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
 
         /* --- GAME WORLD --- */
         #game-container {
             width: 100%; height: 100%;
-            overflow-x: auto; overflow-y: hidden;
+            overflow-x: scroll; overflow-y: hidden;
             white-space: nowrap; position: relative;
-            scroll-behavior: smooth;
+            scroll-behavior: auto; /* Changed to auto for JS control */
         }
         #game-container::-webkit-scrollbar { display: none; }
 
@@ -164,14 +168,13 @@
         }
         .btn-retro:hover { background: #55ff55; color: #000; transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #000; }
 
-        /* Gallery 6 Grid */
         .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .gallery-item { border: 2px solid #000; background: #eee; text-align: center; padding: 10px; }
         .gallery-img { width: 100%; height: auto; display: block; margin-bottom: 5px; }
         .gallery-txt { font-size: 0.8rem; font-weight: 700; font-family: 'Outfit'; }
 
         @keyframes blink { 50% { opacity: 0; } }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } }
         @keyframes wave { from { transform: skewY(0deg); } to { transform: skewY(10deg); } }
 
         @media (max-width: 768px) {
@@ -186,18 +189,19 @@
 
     <div id="start-overlay" onclick="startGame()">
         <div class="start-msg">
-            CLICK TO START<br><br>
-            <span style="font-size:12px; color:#55ff55;">(ENABLE AUDIO)</span>
+            CLICK TO START JOURNEY<br><br>
+            <span style="font-size:12px; color:#55ff55;">(AUTOPILOT ON)</span>
         </div>
     </div>
 
-    <div class="mute-btn" onclick="toggleMute()" id="mute-ctrl">
-        <i class="fas fa-volume-up" id="mute-icon"></i>
+    <div class="hud">
+        <div class="hud-btn" onclick="togglePause()" id="pause-btn"><i class="fas fa-pause"></i></div>
+        <div class="hud-btn" onclick="toggleMute()" id="mute-ctrl"><i class="fas fa-volume-up" id="mute-icon"></i></div>
     </div>
 
     <audio id="sfx-coin" src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA=="></audio>
     <audio id="bgm" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/123/123.wav" type="audio/wav"> 
+        <source src="https://assets.mixkit.co/active_storage/sfx/951/951.wav" type="audio/wav"> 
     </audio>
 
     <div class="player-wrapper">
@@ -211,14 +215,14 @@
     <div class="cloud c3"></div>
     <div class="cloud c4"></div>
 
-    <div id="game-container" onscroll="handleScroll()">
+    <div id="game-container">
         <div class="level">
             
             <div class="scene">
                 <div class="title-block">
                     <h1 class="main-title">SUPER NIHARIKA<br>WORLD</h1>
-                    <div class="sub-title">PRESS START (SCROLL RIGHT)</div>
-                    <p class="controls-hint">USE MOUSE WHEEL TO MOVE >></p>
+                    <div class="sub-title">LEVEL 1: THE JOURNEY</div>
+                    <p class="controls-hint">AUTO-SCROLLING ENABLED...</p>
                 </div>
             </div>
 
@@ -302,11 +306,11 @@
     <div id="modal-bajaj" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">World 3: Bajaj Finserv</h2>
+            <h2 class="modal-header">Level 3: Bajaj Finserv</h2>
             <div class="job-card">
                 <div class="job-role">Social Media Manager</div>
-                <span class="job-company">Aug 2023 - Present [cite: 9]</span>
-                <p class="job-desc">Leading successful campaigns to increase brand awareness. Leveraged advanced AI tools to manage social media for <strong>1M+ LinkedIn</strong> and <strong>10K+ Instagram</strong> followers. Drove Instagram growth from 2K to 12K in six months [cite: 10-12].</p>
+                <span class="job-company">Aug 2023 - Present</span>
+                <p class="job-desc">Leading successful campaigns to increase brand awareness. Leveraged advanced AI tools to manage social media for <strong>1M+ LinkedIn</strong> and <strong>10K+ Instagram</strong> followers. [cite_start]Drove Instagram growth from 2K to 12K in six months [cite: 130-133].</p>
             </div>
         </div>
     </div>
@@ -314,11 +318,11 @@
     <div id="modal-e2e" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">World 2: E2E Networks</h2>
+            <h2 class="modal-header">Level 2: E2E Networks</h2>
             <div class="job-card">
                 <div class="job-role">Technical Content Manager</div>
-                <span class="job-company">Apr 2022 - Jul 2023 [cite: 26]</span>
-                <p class="job-desc">Managed technical content and SEO. Scaled LinkedIn community to 1M+ members. Achieved <strong>500% follower growth</strong> in 6 months[cite: 12].</p>
+                <span class="job-company">Apr 2022 - July 2023</span>
+                <p class="job-desc">Managed technical content and SEO. Scaled LinkedIn community to 1M+ members. [cite_start]Achieved <strong>500% follower growth</strong> in 6 months [cite: 145-148].</p>
             </div>
         </div>
     </div>
@@ -326,16 +330,16 @@
     <div id="modal-early" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">World 1: Origins</h2>
+            <h2 class="modal-header">Level 1: Origins</h2>
             <div class="job-card">
                 <div class="job-role">Marketing Specialist</div>
-                <span class="job-company">Scaler Academy | Dec 2021 - Mar 2022 [cite: 31]</span>
-                <p class="job-desc">Counseled 500+ IT professionals. Exceeded revenue targets through optimized lead generation[cite: 32].</p>
+                <span class="job-company">Scaler Academy | Dec 2021 - Mar 2022</span>
+                <p class="job-desc">Counseled 500+ IT professionals. [cite_start]Exceeded revenue targets through optimized lead generation [cite: 150-152].</p>
             </div>
             <div class="job-card">
                 <div class="job-role">Marketing Specialist</div>
-                <span class="job-company">PlanetSpark | Feb 2021 - Sep 2021 [cite: 43]</span>
-                <p class="job-desc">Crafted K-12 curriculums, driving over <strong>1,000 admissions</strong> and exceeding monthly revenue targets by <strong>200-300%</strong>[cite: 44].</p>
+                <span class="job-company">PlanetSpark | Feb 2021 - Sep 2021</span>
+                [cite_start]<p class="job-desc">Crafted K-12 curriculums, driving over <strong>1,000 admissions</strong> and exceeding monthly revenue targets by <strong>200-300%</strong> [cite: 162-164].</p>
             </div>
         </div>
     </div>
@@ -356,6 +360,7 @@
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
             <h2 class="modal-header">Hall of Fame</h2>
+            <p style="font-size:0.8rem; color:#666; margin-bottom:15px;">Upload images award1.jpg - award6.jpg</p>
             <div class="gallery-grid">
                 <div class="gallery-item"><img src="award1.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">Teach India</span></div>
                 <div class="gallery-item"><img src="award2.jpg" class="gallery-img" onerror="this.style.display='none'"><span class="gallery-txt">Inspiring Author</span></div>
@@ -378,23 +383,50 @@
 
     <script>
         // --- AUDIO ENGINE ---
-        // Fake 8-bit coin sound (Base64)
         const coinSound = new Audio("data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA==");
-        
-        // Background Music (External URL)
-        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/123/123.wav"); 
+        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/951/951.wav"); 
         bgm.loop = true;
         bgm.volume = 0.4;
 
         let isMuted = false;
+        let autoScroll;
+        let isPaused = false;
+        const speed = 2; // Pixels per interval
 
         function startGame() {
             document.getElementById('start-overlay').style.display = 'none';
+            document.querySelector('.hud-btn').style.display = 'flex';
             document.getElementById('mute-ctrl').style.display = 'flex';
-            // Try to play audio on interaction
-            bgm.play().catch(e => console.log("Audio requires further interaction"));
+            
+            // Try audio
+            bgm.play().catch(e => console.log("Audio needs user intent"));
+            
+            // Start Autopilot
+            startAutoScroll();
         }
 
+        // --- AUTOPILOT LOGIC ---
+        function startAutoScroll() {
+            if(autoScroll) clearInterval(autoScroll);
+            autoScroll = setInterval(() => {
+                if(!isPaused) {
+                    const container = document.getElementById('game-container');
+                    container.scrollLeft += speed;
+                    
+                    // Simple flip logic
+                    const player = document.querySelector('.player-wrapper');
+                    player.style.transform = "scaleX(1)";
+                }
+            }, 30); // ~30fps
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            const btn = document.getElementById('pause-btn');
+            btn.innerHTML = isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+        }
+
+        // --- AUDIO CONTROLS ---
         function toggleMute() {
             isMuted = !isMuted;
             if(isMuted) {
@@ -413,34 +445,33 @@
             }
         }
 
-        // --- GAME LOGIC ---
+        // --- INTERACTION ---
         const container = document.getElementById('game-container');
-        const player = document.querySelector('.player-wrapper');
-        let lastScroll = 0;
-
-        // Mouse Wheel Horizontal Scroll
-        container.addEventListener('wheel', (evt) => {
-            evt.preventDefault();
-            container.scrollLeft += evt.deltaY;
+        
+        // Pause on hover over interactive elements
+        document.querySelectorAll('.pipe, .q-block, .castle-zone, .flag-zone').forEach(el => {
+            el.addEventListener('mouseenter', () => isPaused = true);
+            el.addEventListener('mouseleave', () => {
+                // Only unpause if main pause button isn't active
+                if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
+            });
         });
 
-        // Player Flip Logic
-        container.addEventListener('scroll', () => {
-            const currentScroll = container.scrollLeft;
-            if (currentScroll > lastScroll) {
-                document.querySelector('.player-wrapper').style.transform = "scaleX(1)";
-            } else {
-                document.querySelector('.player-wrapper').style.transform = "scaleX(-1)";
-            }
-            lastScroll = currentScroll;
+        // Key controls
+        document.addEventListener('keydown', (e) => {
+            if(e.key === "ArrowRight") container.scrollLeft += 20;
+            if(e.key === "ArrowLeft") container.scrollLeft -= 20;
         });
 
         function openModal(id) {
             playCoin();
+            isPaused = true; // Pause scrolling when modal opens
             document.getElementById(id).style.display = 'flex';
         }
         function closeModal() {
             document.querySelectorAll('.modal-overlay').forEach(el => el.style.display = 'none');
+            // Resume if not manually paused
+            if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
         }
     </script>
 </body>
