@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Super Niharika World | Final</title>
+    <title>Super Niharika World | Ultimate</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -40,7 +40,7 @@
             background: #000;
         }
 
-        /* --- HUD --- */
+        /* --- HUD CONTROLS --- */
         .hud {
             position: fixed; top: 20px; right: 20px; z-index: 2000; display: flex; gap: 10px;
         }
@@ -199,22 +199,18 @@
         <div class="hud-btn" onclick="toggleMute()" id="mute-ctrl"><i class="fas fa-volume-up" id="mute-icon"></i></div>
     </div>
 
-    <audio id="sfx-coin" src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA=="></audio>
-    <audio id="bgm" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/123/123.wav" type="audio/wav"> 
-    </audio>
-
     <div class="player-wrapper">
         <img src="ME.jpg" alt="Player" class="player-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Niharika&background=random'">
         <span class="player-name">Niharika</span>
     </div>
 
-    <div id="game-container">
-        <div class="ground"></div>
-        <div class="cloud c1"></div>
-        <div class="cloud c2"></div>
-        <div class="cloud c3"></div>
+    <div class="ground"></div>
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
 
+    <div id="game-container">
         <div class="level">
             
             <div class="scene">
@@ -357,12 +353,12 @@
             <button class="modal-close" onclick="closeModal()">X</button>
             <h2 class="modal-header">Hall of Fame</h2>
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="award1.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Teach India</span></div>
-                <div class="gallery-item"><img src="award2.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Author</span></div>
-                <div class="gallery-item"><img src="award3.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Wingword</span></div>
-                <div class="gallery-item"><img src="award4.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">StoryMirror</span></div>
-                <div class="gallery-item"><img src="award5.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">Book Day</span></div>
-                <div class="gallery-item"><img src="award6.jpg" class="gallery-img" alt="Award" onerror="this.style.display='none'"><span class="gallery-txt">SheForeword</span></div>
+                <div class="gallery-item"><img src="award1.jpg" class="gallery-img" alt="Award 1" onerror="this.style.display='none'"><span class="gallery-txt">Teach India</span></div>
+                <div class="gallery-item"><img src="award2.jpg" class="gallery-img" alt="Award 2" onerror="this.style.display='none'"><span class="gallery-txt">Inspiring Author</span></div>
+                <div class="gallery-item"><img src="award3.jpg" class="gallery-img" alt="Award 3" onerror="this.style.display='none'"><span class="gallery-txt">Wingword Prize</span></div>
+                <div class="gallery-item"><img src="award4.jpg" class="gallery-img" alt="Award 4" onerror="this.style.display='none'"><span class="gallery-txt">StoryMirror</span></div>
+                <div class="gallery-item"><img src="award5.jpg" class="gallery-img" alt="Award 5" onerror="this.style.display='none'"><span class="gallery-txt">World Book Day</span></div>
+                <div class="gallery-item"><img src="award6.jpg" class="gallery-img" alt="Award 6" onerror="this.style.display='none'"><span class="gallery-txt">SheForeword</span></div>
             </div>
         </div>
     </div>
@@ -377,24 +373,26 @@
     </div>
 
     <script>
-        // --- CONFIG LINKS ---
+        // --- !!! EDIT YOUR LINKS HERE !!! ---
         const links = {
-            p1: "https://niharikasrivastava1998-nihu.github.io/Total-Impact-Calculator/",
+            p1: "https://niharikasrivastava1998-nihu.github.io/socialmeter/",
             p2: "https://niharikasrivastava1998-nihu.github.io/Day.OS/",
-            p3: "https://niharikasrivastava1998-nihu.github.io/VeggieSmart/"
+            p3: "https://niharikasrivastava1998-nihu.github.io/Veggiesmart/"
         };
+        // ------------------------------------
+
         document.getElementById('link-1').href = links.p1;
         document.getElementById('link-2').href = links.p2;
         document.getElementById('link-3').href = links.p3;
 
-        // --- AUDIO ---
+        // --- AUDIO ENGINE ---
         const coinSound = new Audio("data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA==");
-        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/951/951.wav"); 
+        // New Music Track
+        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/953/953.wav"); 
         bgm.loop = true;
         bgm.volume = 0.4;
-        let isMuted = false;
 
-        // --- AUTOPILOT ---
+        let isMuted = false;
         let autoScroll;
         let isPaused = false;
         const speed = 2; 
@@ -424,8 +422,13 @@
 
         function toggleMute() {
             isMuted = !isMuted;
-            if(isMuted) { bgm.pause(); document.getElementById('mute-icon').className = "fas fa-volume-mute"; }
-            else { bgm.play(); document.getElementById('mute-icon').className = "fas fa-volume-up"; }
+            if(isMuted) {
+                bgm.pause();
+                document.getElementById('mute-icon').className = "fas fa-volume-mute";
+            } else {
+                bgm.play();
+                document.getElementById('mute-icon').className = "fas fa-volume-up";
+            }
         }
 
         function playCoin() {
