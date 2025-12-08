@@ -174,7 +174,7 @@
         .gallery-txt { font-size: 0.8rem; font-weight: 700; font-family: 'Outfit'; }
 
         @keyframes blink { 50% { opacity: 0; } }
-        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } }
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } 100% { transform: translate(-50%, -50%) scale(1); } }
         @keyframes wave { from { transform: skewY(0deg); } to { transform: skewY(10deg); } }
 
         @media (max-width: 768px) {
@@ -347,16 +347,20 @@
             <h2 class="modal-header">Code Castle</h2>
             <p style="margin-bottom:20px;">Open Source Projects live on GitHub.</p>
             
-            <a href="#" id="link-1" target="_blank" class="btn-retro">Total Impact Calculator</a>
-            <a href="#" id="link-2" target="_blank" class="btn-retro">Day.OS (AI Life Planner)</a>
-            <a href="#" id="link-3" target="_blank" class="btn-retro">VeggieSmart (Meal Planner)</a>
-        </div>
+            <a href="https://niharikasrivastava1998-nihu.github.io/Total-Impact-Calculator/" target="_blank" class="btn-retro">Total Impact Calculator</a>
+            
+            <a href="https://niharikasrivastava1998-nihu.github.io/Day.OS/" target="_blank" class="btn-retro">Day.OS (AI Life Planner)</a>
+            
+            <a href="https://niharikasrivastava1998-nihu.github.io/VeggieSmart/" target="_blank" class="btn-retro">VeggieSmart (Meal Planner)</a>
+            
+            </div>
     </div>
 
     <div id="modal-awards" class="modal-overlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">X</button>
             <h2 class="modal-header">Hall of Fame</h2>
+            <p style="font-size:0.8rem; color:#666; margin-bottom:15px;">Upload images award1.jpg - award6.jpg</p>
             <div class="gallery-grid">
                 <div class="gallery-item"><img src="award1.jpg" class="gallery-img" alt="Award 1" onerror="this.style.display='none'"><span class="gallery-txt">Teach India</span></div>
                 <div class="gallery-item"><img src="award2.jpg" class="gallery-img" alt="Award 2" onerror="this.style.display='none'"><span class="gallery-txt">Inspiring Author</span></div>
@@ -378,25 +382,9 @@
     </div>
 
     <script>
-        /* =====================================================
-        👇👇👇 EDIT_LINKS_HERE (CHANGE THE TEXT INSIDE " ") 👇👇👇
-        =====================================================
-        */
-        const githubLinks = {
-            project1: "https://niharikasrivastava1998-nihu.github.io/socialmeter/",
-            project2: "https://niharikasrivastava1998-nihu.github.io/Day.OS/",
-            project3: "https://niharikasrivastava1998-nihu.github.io/Veggiesmart/"
-        };
-        /* ================================================= */
-
-        // APPLY LINKS
-        document.getElementById('link-1').href = githubLinks.project1;
-        document.getElementById('link-2').href = githubLinks.project2;
-        document.getElementById('link-3').href = githubLinks.project3;
-
         // --- AUDIO ENGINE ---
         const coinSound = new Audio("data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA==");
-        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/123/123.wav"); 
+        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/143/143.wav"); 
         bgm.loop = true;
         bgm.volume = 0.4;
 
@@ -419,12 +407,9 @@
                 if(!isPaused) {
                     const container = document.getElementById('game-container');
                     container.scrollLeft += speed;
-                    
-                    // Simple flip logic
-                    const player = document.querySelector('.player-wrapper');
-                    player.style.transform = "scaleX(1)";
+                    document.querySelector('.player-wrapper').style.transform = "scaleX(1)";
                 }
-            }, 20); // 50fps
+            }, 20);
         }
 
         function togglePause() {
@@ -436,10 +421,10 @@
             isMuted = !isMuted;
             if(isMuted) {
                 bgm.pause();
-                document.getElementById('mute-ctrl').innerHTML = '<i class="fas fa-volume-mute"></i>';
+                document.getElementById('mute-icon').className = "fas fa-volume-mute";
             } else {
                 bgm.play();
-                document.getElementById('mute-ctrl').innerHTML = '<i class="fas fa-volume-up"></i>';
+                document.getElementById('mute-icon').className = "fas fa-volume-up";
             }
         }
 
