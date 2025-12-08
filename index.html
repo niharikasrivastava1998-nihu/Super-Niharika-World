@@ -367,4 +367,114 @@
     </div>
 
     <div id="modal-contact" class="modal-overlay">
-        <div class
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">X</button>
+            <h2 class="modal-header">Continue?</h2>
+            <a href="mailto:niharikasrivastava1998@gmail.com" class="btn-retro" style="background:#5c94fc;">Send Email</a>
+            <a href="https://www.linkedin.com/in/niharika-srivastava-47240a185" target="_blank" class="btn-retro" style="background:#0077b5;">LinkedIn Connect</a>
+        </div>
+    </div>
+
+    <script>
+        // ******************************************************
+        //  👇👇👇 EDIT_LINKS_HERE 👇👇👇
+        // ******************************************************
+        const myConfig = {
+            link1: "https://niharikasrivastava1998-nihu.github.io/socialmeter/",
+            link2: "https://niharikasrivastava1998-nihu.github.io/Day.OS/",
+            link3: "https://niharikasrivastava1998-nihu.github.io/Veggiesmart/",
+            
+            // New Music
+            music: "https://ia800504.us.archive.org/33/items/SuperMarioBros.ThemeMusic/SuperMarioBros.mp3"
+        };
+        // ******************************************************
+
+        // APPLY SETTINGS
+        document.getElementById('link-1').href = myConfig.link1;
+        document.getElementById('link-2').href = myConfig.link2;
+        document.getElementById('link-3').href = myConfig.link3;
+        document.getElementById('bgm').src = myConfig.music;
+
+        // --- AUDIO ENGINE ---
+        const coinSound = new Audio("data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA==");
+        const bgmPlayer = document.getElementById('bgm');
+        bgmPlayer.loop = true;
+        bgmPlayer.volume = 0.4;
+
+        let isMuted = false;
+        let autoScroll;
+        let isPaused = false;
+        const speed = 2; 
+
+        function startGame() {
+            document.getElementById('start-overlay').style.display = 'none';
+            document.querySelector('.hud-btn').style.display = 'flex';
+            document.getElementById('mute-ctrl').style.display = 'flex';
+            bgmPlayer.play().catch(e => console.log("Audio needs user intent"));
+            startAutoScroll();
+        }
+
+        function startAutoScroll() {
+            if(autoScroll) clearInterval(autoScroll);
+            autoScroll = setInterval(() => {
+                if(!isPaused) {
+                    const container = document.getElementById('game-container');
+                    container.scrollLeft += speed;
+                    
+                    // Simple flip logic
+                    const player = document.querySelector('.player-wrapper');
+                    player.style.transform = "scaleX(1)";
+                }
+            }, 20); // 50fps
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            document.getElementById('pause-btn').innerHTML = isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            if(isMuted) {
+                bgmPlayer.pause();
+                document.getElementById('mute-icon').className = "fas fa-volume-mute";
+            } else {
+                bgmPlayer.play();
+                document.getElementById('mute-icon').className = "fas fa-volume-up";
+            }
+        }
+
+        function playCoin() {
+            if(!isMuted) {
+                const click = coinSound.cloneNode();
+                click.play().catch(e=>{});
+            }
+        }
+
+        // Hover pause
+        document.querySelectorAll('.pipe, .q-block, .castle-zone, .flag-zone').forEach(el => {
+            el.addEventListener('mouseenter', () => isPaused = true);
+            el.addEventListener('mouseleave', () => {
+                if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
+            });
+        });
+
+        // Key controls
+        document.addEventListener('keydown', (e) => {
+            const container = document.getElementById('game-container');
+            if(e.key === "ArrowRight") container.scrollLeft += 20;
+            if(e.key === "ArrowLeft") container.scrollLeft -= 20;
+        });
+
+        function openModal(id) {
+            playCoin();
+            isPaused = true;
+            document.getElementById(id).style.display = 'flex';
+        }
+        function closeModal() {
+            document.querySelectorAll('.modal-overlay').forEach(el => el.style.display = 'none');
+            if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
+        }
+    </script>
+</body>
+</html>
