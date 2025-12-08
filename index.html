@@ -200,9 +200,7 @@
     </div>
 
     <audio id="sfx-coin" src="data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA=="></audio>
-    <audio id="bgm" loop>
-        <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568.wav" type="audio/wav"> 
-    </audio>
+    <audio id="bgm" loop></audio> 
 
     <div class="player-wrapper">
         <img src="ME.jpg" alt="Player" class="player-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Niharika&background=random'">
@@ -347,9 +345,9 @@
             <h2 class="modal-header">Code Castle</h2>
             <p style="margin-bottom:20px;">Open Source Projects live on GitHub.</p>
             
-            <a href="https://niharikasrivastava1998-nihu.github.io/Total-Impact-Calculator/" target="_blank" class="btn-retro">Total Impact Calculator</a>
-            <a href="https://niharikasrivastava1998-nihu.github.io/Day.OS/" target="_blank" class="btn-retro">Day.OS (AI Life Planner)</a>
-            <a href="https://niharikasrivastava1998-nihu.github.io/VeggieSmart/" target="_blank" class="btn-retro">VeggieSmart (Meal Planner)</a>
+            <a href="#" id="link-1" target="_blank" class="btn-retro">Total Impact Calculator</a>
+            <a href="#" id="link-2" target="_blank" class="btn-retro">Day.OS (AI Life Planner)</a>
+            <a href="#" id="link-3" target="_blank" class="btn-retro">VeggieSmart (Meal Planner)</a>
         </div>
     </div>
 
@@ -369,95 +367,4 @@
     </div>
 
     <div id="modal-contact" class="modal-overlay">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal()">X</button>
-            <h2 class="modal-header">Continue?</h2>
-            <a href="mailto:niharikasrivastava1998@gmail.com" class="btn-retro" style="background:#5c94fc;">Send Email</a>
-            <a href="https://www.linkedin.com/in/niharika-srivastava-47240a185" target="_blank" class="btn-retro" style="background:#0077b5;">LinkedIn Connect</a>
-        </div>
-    </div>
-
-    <script>
-        // --- AUDIO ENGINE ---
-        const coinSound = new Audio("data:audio/wav;base64,UklGRjIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YRAAAACQB5AHAQAAAAAA//8AAAEAAAABAA==");
-        const bgm = new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568.wav"); 
-        bgm.loop = true;
-        bgm.volume = 0.4;
-
-        let isMuted = false;
-        let autoScroll;
-        let isPaused = false;
-        const speed = 2; 
-
-        function startGame() {
-            document.getElementById('start-overlay').style.display = 'none';
-            document.querySelector('.hud-btn').style.display = 'flex';
-            document.getElementById('mute-ctrl').style.display = 'flex';
-            bgm.play().catch(e => console.log("Audio needs user intent"));
-            startAutoScroll();
-        }
-
-        function startAutoScroll() {
-            if(autoScroll) clearInterval(autoScroll);
-            autoScroll = setInterval(() => {
-                if(!isPaused) {
-                    const container = document.getElementById('game-container');
-                    container.scrollLeft += speed;
-                    
-                    // Simple flip logic
-                    const player = document.querySelector('.player-wrapper');
-                    player.style.transform = "scaleX(1)";
-                }
-            }, 20); // 50fps
-        }
-
-        function togglePause() {
-            isPaused = !isPaused;
-            document.getElementById('pause-btn').innerHTML = isPaused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
-        }
-
-        function toggleMute() {
-            isMuted = !isMuted;
-            if(isMuted) {
-                bgm.pause();
-                document.getElementById('mute-icon').className = "fas fa-volume-mute";
-            } else {
-                bgm.play();
-                document.getElementById('mute-icon').className = "fas fa-volume-up";
-            }
-        }
-
-        function playCoin() {
-            if(!isMuted) {
-                const click = coinSound.cloneNode();
-                click.play().catch(e=>{});
-            }
-        }
-
-        // Hover pause
-        document.querySelectorAll('.pipe, .q-block, .castle-zone, .flag-zone').forEach(el => {
-            el.addEventListener('mouseenter', () => isPaused = true);
-            el.addEventListener('mouseleave', () => {
-                if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
-            });
-        });
-
-        // Key controls
-        document.addEventListener('keydown', (e) => {
-            const container = document.getElementById('game-container');
-            if(e.key === "ArrowRight") container.scrollLeft += 20;
-            if(e.key === "ArrowLeft") container.scrollLeft -= 20;
-        });
-
-        function openModal(id) {
-            playCoin();
-            isPaused = true;
-            document.getElementById(id).style.display = 'flex';
-        }
-        function closeModal() {
-            document.querySelectorAll('.modal-overlay').forEach(el => el.style.display = 'none');
-            if(document.getElementById('pause-btn').innerHTML.includes('pause')) isPaused = false;
-        }
-    </script>
-</body>
-</html>
+        <div class
